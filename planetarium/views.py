@@ -1,5 +1,12 @@
 from rest_framework import viewsets
-from .models import AstronomyShow, ShowTheme, PlanetariumDome, ShowSession, Reservation, Ticket
+from .models import (
+    AstronomyShow,
+    ShowTheme,
+    PlanetariumDome,
+    ShowSession,
+    Reservation,
+    Ticket,
+)
 from .serializers import (
     AstronomyShowSerializer,
     ShowThemeSerializer,

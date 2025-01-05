@@ -36,7 +36,9 @@ class ShowSessionSerializer(serializers.ModelSerializer):
 
 
 class ShowSessionListSerializer(ShowSessionSerializer):
-    astronomy_show_title = serializers.CharField(source="astronomy_show.title", read_only=True)
+    astronomy_show_title = serializers.CharField(
+        source="astronomy_show.title", read_only=True
+    )
     dome_name = serializers.CharField(source="planetarium_dome.name", read_only=True)
 
     class Meta:
@@ -51,7 +53,7 @@ class TicketSerializer(serializers.ModelSerializer):
             attrs["row"],
             attrs["seat"],
             attrs["show_session"].planetarium_dome,
-            ValidationError
+            ValidationError,
         )
         return data
 
@@ -77,7 +79,13 @@ class ShowSessionDetailSerializer(ShowSessionSerializer):
 
     class Meta:
         model = ShowSession
-        fields = ("id", "show_time", "astronomy_show", "planetarium_dome", "taken_places")
+        fields = (
+            "id",
+            "show_time",
+            "astronomy_show",
+            "planetarium_dome",
+            "taken_places",
+        )
 
 
 class ReservationSerializer(serializers.ModelSerializer):
