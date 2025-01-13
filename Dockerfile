@@ -1,10 +1,17 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
-WORKDIR /app
+LABEL maintainer="roman.vynnytskyi.tt@gmail.com"
 
-COPY requirements.txt requirements.txt
+ENV PYTHONUNBUFFERED=1
+
+WORKDIR /planetarium-api
+
+COPY requirements.txt /planetarium-api/
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . .
+COPY . /planetarium-api/
+
+EXPOSE 8000
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
