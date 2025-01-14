@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from .models import (
+from planetarium.models import (
     AstronomyShow,
     ShowTheme,
     PlanetariumDome,
