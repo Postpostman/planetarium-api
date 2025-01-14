@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import (
 )
 
 router = DefaultRouter()
-router.register(r"users", UserViewSet, basename="user")
+router.register(r"users", UserViewSet, basename="users")
 
 urlpatterns = [
     path("", include(router.urls)),
@@ -19,4 +19,4 @@ urlpatterns = [
     path("token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 ]
 
-app_name = "user"
+app_name = "users"
