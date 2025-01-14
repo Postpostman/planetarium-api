@@ -16,8 +16,8 @@ User = get_user_model()
 class IsStr(TestCase):
     def setUp(self):
         self.user = User.objects.create_user(
-            email='testuser@gmail.com',
-            password='testpass')
+            email="testuser@gmail.com", password="testpass"
+        )
 
         self.astronomy_show = AstronomyShow.objects.create(
             title="Planets of Sun System",
@@ -34,10 +34,7 @@ class IsStr(TestCase):
             show_time="2024-01-13 12:00",
         )
         self.ticket = Ticket.objects.create(
-            row=1,
-            seat=1,
-            show_session=self.show_session,
-            reservation=self.reservation
+            row=1, seat=1, show_session=self.show_session, reservation=self.reservation
         )
 
     def test_astronomy_show_str(self):
@@ -62,5 +59,5 @@ class IsStr(TestCase):
             str(self.ticket),
             "Row: 1, "
             "Seat: 1, ShowSession: "
-            "Planets of Sun System at 2024-01-13 12:00"
+            "Planets of Sun System at 2024-01-13 12:00",
         )

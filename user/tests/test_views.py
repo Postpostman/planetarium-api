@@ -20,7 +20,7 @@ class UserViewSetTests(TestCase):
             password="adminpassword123",
         )
         self.token = Token.objects.create(user=self.user)
-        self.client.credentials(HTTP_AUTHORIZATION=f'Token {self.token.key}')
+        self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token.key}")
 
     def test_list_users_as_admin(self):
         """Test listing users as an admin."""
@@ -73,7 +73,7 @@ class ManageUserViewTests(TestCase):
             password="testpassword123",
         )
         self.token = Token.objects.create(user=self.user)
-        self.client.credentials(HTTP_AUTHORIZATION=f'Token {self.token.key}')
+        self.client.credentials(HTTP_AUTHORIZATION=f"Token {self.token.key}")
 
     def test_retrieve_user_profile(self):
         """Test retrieving the profile of the authenticated user."""
