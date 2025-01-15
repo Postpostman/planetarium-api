@@ -1,19 +1,20 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 from django.urls import reverse
-from planetarium.models import (
-    AstronomyShow,
-    ShowTheme,
-    PlanetariumDome,
-    ShowSession,
-    Reservation,
-    Ticket,
+from .factories import (
+    AstronomyShowFactory,
+    ShowThemeFactory,
+    PlanetariumDomeFactory,
+    ShowSessionFactory,
+    ReservationFactory,
+    TicketFactory,
 )
+from planetarium.models import AstronomyShow, ShowTheme, PlanetariumDome, ShowSession, Reservation, Ticket
 
 
 class AstronomyShowViewSetTest(APITestCase):
     def setUp(self):
-        self.show = AstronomyShow.objects.create(name="Galactic Adventures")
+        self.show = AstronomyShowFactory()
         self.url = reverse("planetarium:astronomyshow-list")
 
     def test_list_astronomy_shows(self):
@@ -30,7 +31,7 @@ class AstronomyShowViewSetTest(APITestCase):
 
 class ShowThemeViewSetTest(APITestCase):
     def setUp(self):
-        self.theme = ShowTheme.objects.create(name="Space Exploration")
+        self.theme = ShowThemeFactory()
         self.url = reverse("planetarium:showtheme-list")
 
     def test_list_show_themes(self):
@@ -47,7 +48,7 @@ class ShowThemeViewSetTest(APITestCase):
 
 class PlanetariumDomeViewSetTest(APITestCase):
     def setUp(self):
-        self.dome = PlanetariumDome.objects.create(name="Main Dome")
+        self.dome = PlanetariumDomeFactory()
         self.url = reverse("planetarium:planetariumdome-list")
 
     def test_list_planetarium_domes(self):
@@ -64,7 +65,7 @@ class PlanetariumDomeViewSetTest(APITestCase):
 
 class ShowSessionViewSetTest(APITestCase):
     def setUp(self):
-        self.session = ShowSession.objects.create(title="Morning Show")
+        self.session = ShowSessionFactory()
         self.url = reverse("planetarium:showsession-list")
 
     def test_list_show_sessions(self):
@@ -81,7 +82,7 @@ class ShowSessionViewSetTest(APITestCase):
 
 class ReservationViewSetTest(APITestCase):
     def setUp(self):
-        self.reservation = Reservation.objects.create(name="John Doe")
+        self.reservation = ReservationFactory()
         self.url = reverse("planetarium:reservation-list")
 
     def test_list_reservations(self):
@@ -98,7 +99,7 @@ class ReservationViewSetTest(APITestCase):
 
 class TicketViewSetTest(APITestCase):
     def setUp(self):
-        self.ticket = Ticket.objects.create(number="12345")
+        self.ticket = TicketFactory()
         self.url = reverse("planetarium:ticket-list")
 
     def test_list_tickets(self):
